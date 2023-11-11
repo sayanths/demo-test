@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:user_fetching_demo/core/color/color.dart';
 import 'package:user_fetching_demo/feature/home_view/model/user_model.dart';
+import 'package:user_fetching_demo/feature/home_view/view/widget/overview.dart';
 import 'package:user_fetching_demo/feature/home_view/view_model/home_provider.dart';
 import 'package:user_fetching_demo/routes/routes.dart';
 
@@ -49,16 +50,40 @@ class HomeView extends StatelessWidget {
   }
 }
 
-class OverViewPage extends StatelessWidget {
-  final UserModel? data;
-  const OverViewPage({super.key, this.data});
+class ShowingTextWidget extends StatelessWidget {
+  final String title;
+  final String subTitle;
+  const ShowingTextWidget({
+    super.key,
+    required this.title,
+    required this.subTitle,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Column(
-        children: [],
-      ),
+    return Column(
+      children: [
+        Row(
+          children: [
+            Expanded(
+                child: Text(
+              title,
+              style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            )),
+            const Expanded(child: Text(":")),
+            Expanded(
+                flex: 5,
+                child: Text(
+                  subTitle,
+                  style: const TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.w500,
+                      color: Color.fromARGB(255, 42, 42, 42)),
+                ))
+          ],
+        ),
+        size10,
+      ],
     );
   }
 }
