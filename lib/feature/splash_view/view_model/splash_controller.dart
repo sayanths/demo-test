@@ -7,7 +7,7 @@ import 'package:user_fetching_demo/routes/routes.dart';
 class SplashController extends ChangeNotifier {
   SplashController() {
     Timer(const Duration(seconds: 3), () {
-      Routes.pushNonNamed(screen: const HomeView());
+      Routes.pushReplaceNonNamed(screen: const HomeView());
     });
   }
 }

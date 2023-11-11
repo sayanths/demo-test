@@ -8,6 +8,6 @@ class Apc {
   static const Color loginContainerColor = Color(0xFFD898F6);
 }
 
-SizedBox size10 = SizedBox(
-  height: Responsive.heightMultiplier! * 5,
-);
+// SizedBox size10 = SizedBox(
+//   height: Responsive.heightMultiplier! * 5,
+// );

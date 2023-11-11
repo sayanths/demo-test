@@ -82,7 +82,7 @@ class ShowingTextWidget extends StatelessWidget {
                 ))
           ],
         ),
-        size10,
+       /// size10,
       ],
     );
   }
