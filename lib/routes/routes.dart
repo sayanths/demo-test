@@ -6,7 +6,7 @@ class Routes {
   static final routeKey = GlobalKey<NavigatorState>();
 
   Map<String, Widget Function(BuildContext)> route = {
-    "/loginView": (context) => const LoginView()
+    "/HomeView": (context) => const HomeView()
   };
 
   static push({required var screen}) {
