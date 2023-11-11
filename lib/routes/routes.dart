@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:user_fetching_demo/feature/home_view/view/home_view.dart';
 
@@ -6,11 +5,28 @@ class Routes {
   static final routeKey = GlobalKey<NavigatorState>();
 
   Map<String, Widget Function(BuildContext)> route = {
-    "/HomeView": (context) => const HomeView()
+    "/HomeView": (context) => const HomeView(),
   };
 
-  static push({required var screen}) {
+  static push({
+    required var screen,
+  }) {
     routeKey.currentState?.pushNamed(screen);
+  }
+
+  static pushNamed({
+    required String screen,
+    String? arguments,
+  }) {
+    routeKey.currentState?.pushNamed(screen, arguments: arguments);
+  }
+
+  static pushNonNamed({required var screen}) {
+    routeKey.currentState?.push(
+      MaterialPageRoute(
+        builder: (context) => screen,
+      ),
+    );
   }
 
   static back({bool? value}) {
@@ -49,6 +65,21 @@ class Routes {
           );
         },
       ),
+    );
+  }
+
+  static pushReplaceNonNamed({required var screen}) {
+    routeKey.currentState?.pushReplacement(
+      MaterialPageRoute(
+        builder: (context) => screen,
+      ),
+    );
+  }
+
+  static pushRemoveUntilNonNamed(Widget screen) {
+    routeKey.currentState?.pushAndRemoveUntil(
+      MaterialPageRoute(builder: (context) => screen),
+      (route) => false,
     );
   }
 }

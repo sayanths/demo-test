@@ -10,15 +10,31 @@ class HomeProvider extends ChangeNotifier {
     getUserListFun();
   }
 
-  UserModel? getUserList;
+  // UserModel? getUserList;
 
+  // Future<void> getUserListFun() async {
+  //   List response = await BaseClient.get(Url.baseUrl);
+  //   if (response[0] >= 200 && response[0] < 300) {
+  //     final data = UserModel.fromJson(response[1]);
+  //     getUserList = data;
+  //     notifyListeners();
+  //     log("${getUserList.toString()}==========");
+  //   }
+  //   notifyListeners();
+  // }
+  List<UserModel>? getUserList; 
   Future<void> getUserListFun() async {
-    List response = await BaseClient.get(Url.baseUrl);
-    if (response[0] >= 200 && response[0] < 300) {
-      final data = UserModel.fromJson(response[1]);
-      getUserList = data;
-      log("${getUserList.toString()}==========");
-    }
+  List response = await BaseClient.get(Url.baseUrl);
+  if (response[0] >= 200 && response[0] < 300) {
+    final List<dynamic> responseData = response[1];
+    final List<UserModel> userList = responseData.map((json) => UserModel.fromJson(json)).toList();
+    
+    // Assuming you want to store the entire list
+    getUserList = userList;
+
     notifyListeners();
+    log("${getUserList.toString()}==========");
   }
+}
+
 }
